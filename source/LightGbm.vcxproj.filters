@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Booster.cpp" />
+    <ClCompile Include="Dataset.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="LightGbm.cpp" />
+    <ClCompile Include="pc.h" />
+    <ClCompile Include="BoosterParams.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Booster.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculate.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Dataset.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightGbm.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Exports.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BoosterParams.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{0ab3ee1b-1d35-40c5-8883-af2a65bb5c08}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
