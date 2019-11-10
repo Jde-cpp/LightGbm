@@ -5,20 +5,16 @@ ifdef CCACHE_EXISTS
 endif
 DEBUG ?= 1
 CXXFLAGS_BASE = -c -g -pthread -fPIC -std=c++17 -Wall -Wno-unknown-pragmas -DJDE_GBM_EXPORTS# -Wno-unknown-pragmas
-#CXXFLAGS =  -g $(INCLUDE) -pthread -c -std=c++17 -Wall -Wno-switch -fPIC
-BIN_DIR_BASE:=../../../bin/
+BIN_DIR_BASE:=../../bin/
 OUT_DIR_BASE := .obj/
-#LIBS = -lstdc++fs -lMy -lIb -lprotobuf  #-lPocoDatad -lPocoFoundationd
 ifeq ($(DEBUG), 1)
 	OUT_DIR=$(OUT_DIR_BASE)debug
 	CXXFLAGS= $(CXXFLAGS_BASE) -O0 -I$(OUT_DIR) -fsanitize=address -fno-omit-frame-pointer 
 	BIN_DIR=$(BIN_DIR_BASE)debug
-	#LIBS=$(LIBS_BASE) -lPocoFoundationd -lPocoDatad -lPocoDataODBCd -lPocoDataMySQLd
 else
 	OUT_DIR=$(OUT_DIR_BASE)release
 	CXXFLAGS= $(CXXFLAGS_BASE) -march=native -DNDEBUG -O3 -I$(OUT_DIR)
 	BIN_DIR=$(BIN_DIR_BASE)release
-	#LIBS=$(LIBS_BASE) -lPocoFoundation -lPocoData -lPocoDataODBC -lPocoDataMySQL
 endif
 
 OUTPUT_FILE = libLgb.so
