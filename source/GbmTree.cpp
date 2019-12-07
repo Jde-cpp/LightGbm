@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GbmTree.h"
 #include "../../../framework/Defines.h"
 

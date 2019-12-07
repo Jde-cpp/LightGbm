@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "FeatureInteractions.h"
 #include "/home/duffyj/code/libraries/LightGBM/include/LightGBM/tree.h"
 

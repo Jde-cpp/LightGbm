@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "BoosterParams.h"
 #define var const auto
 

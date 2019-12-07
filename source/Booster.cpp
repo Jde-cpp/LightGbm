@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Booster.h"
 #include "Dataset.h"
 #include "BoosterParams.h"
@@ -76,7 +75,7 @@ namespace Jde::AI::Dts::LightGbm
 	{
 		var names = FeatureNames();
 		var pImportance = FeatureImportanceValues( eFeatureImportance );
-		ASSRT_EQ( names.size(), pImportance->size() );
+		ASSERT( names.size()==pImportance->size() );
 		auto pResults = make_shared<map<string,double>>();
 		for( uint i=0; i<names.size() && i<pImportance->size(); ++i )
 			pResults->emplace( names[i], (*pImportance)[i] );
@@ -175,7 +174,7 @@ namespace Jde::AI::Dts::LightGbm
 		var failed = LGBM_BoosterGetEval( _handle, validation ? 1 : 0, &outLength, results.data() );
 		if( failed )
 			THROW( Exception(fmt::format("({}) - {}", failed, LastErrorMsg())) );
-		ASSRT_EQ( results.size(), (uint)outLength );
+		ASSERT( results.size()==(uint)outLength );
 
 		return results;
 	}
@@ -209,7 +208,7 @@ namespace Jde::AI::Dts::LightGbm
 		var failed = LGBM_BoosterPredictForMat( _handle, matrix.data(), C_API_DTYPE_FLOAT32, static_cast<int>(matrix.rows()), static_cast<int>(matrix.cols()), matrix.IsRowMajor, C_API_PREDICT_NORMAL, -1/*num_iteration*/, pszParameter, &length, pResults->data() );
 		if( failed )
 			THROW( Exception(fmt::format("({}) - {}", failed, LastErrorMsg())) );
-		ASSRT_EQ( pResults->size(), (uint)length );
+		ASSERT( pResults->size()==(uint)length );
 		return pResults;
 		//Compressed Sparse Column (CSC) or Compressed Sparse Row (CSR) sparse matrix
 		//LIGHTGBM_C_EXPORT int LGBM_BoosterPredictForCSR( BoosterHandle handle, const void* indptr, int indptr_type, const int32_t* indices, const void* data, int data_type, int64_t nindptr, int64_t nelem, int64_t num_col, int predict_type, int num_iteration, const char* parameter, int64_t* out_len, double* out_result );
@@ -222,7 +221,7 @@ namespace Jde::AI::Dts::LightGbm
 		var failed = LGBM_BoosterPredictForMat( _handle, vector.data(), C_API_DTYPE_FLOAT32, 1, static_cast<int>(vector.cols()), vector.IsRowMajor, C_API_PREDICT_NORMAL, -1/*num_iteration*/, pszParameter, &length, &result );
 		if( failed )
 			THROW( Exception(fmt::format("({}) - {}", failed, LastErrorMsg())) );
-		ASSRT_EQ( 1, length );
+		ASSERT( 1==length );
 		return result;
 	}
 	double Booster::Predict( const double* pFeatures )noexcept(false)
@@ -232,7 +231,7 @@ namespace Jde::AI::Dts::LightGbm
 		var failed = LGBM_BoosterPredictForMat( _handle, pFeatures, C_API_DTYPE_FLOAT64, 1, (int32_t)FeatureCount(), 0, C_API_PREDICT_NORMAL, -1/*num_iteration*/, pszParameter, &length, &result );
 		if( failed )
 			THROW( Exception(fmt::format("({}) - {}", failed, LastErrorMsg())) );
-		ASSRT_EQ( 1, length );
+		ASSERT( 1==length );
 		return result;
 	}
 

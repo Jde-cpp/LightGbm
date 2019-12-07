@@ -1,5 +1,5 @@
 #pragma once
-#ifdef JDE_GBM_EXPORTS
+#ifdef Jde_Dts_Lgb_EXPORTS
 	#ifdef _MSC_VER 
 		#define JDE_GBM_VISIBILITY __declspec( dllexport )
 	#else

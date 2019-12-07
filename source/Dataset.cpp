@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Dataset.h"
 #include <list>
 #include "BoosterParams.h"

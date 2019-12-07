@@ -1,5 +1,4 @@
 #pragma region Includes
-#include "stdafx.h"
 #include "LightGbm.h"
 #include <sstream>
 #include <list>

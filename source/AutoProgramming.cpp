@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "AutoProgramming.h"
 #include <fstream>
 #include "Booster.h"
