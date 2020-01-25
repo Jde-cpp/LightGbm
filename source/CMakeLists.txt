@@ -8,6 +8,8 @@ include_directories( "/home/duffyj/code/libraries/LightGBM/include" )
 include_directories( "/home/duffyj/code/libraries/eigen" )
 #############################################################
 add_library( Jde.Dts.Lgb SHARED LightGbm.cpp Booster.cpp Dataset.cpp BoosterParams.cpp )
+#Custom######################################################
+target_link_libraries(Jde.Dts.Lgb _lightgbm)
 #############################################################
 add_compile_definitions(THREAD_LOCAL=thread_local)
 target_precompile_headers(Jde.Dts.Lgb
