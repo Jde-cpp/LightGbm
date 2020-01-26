@@ -46,12 +46,12 @@ namespace Jde::AI::Dts::LightGbm
 		var failed = LGBM_DatasetSetField( _handle, "label", y.data(), static_cast<int>(y.rows()), C_API_DTYPE_FLOAT32 ); //  or C_API_DTYPE_INT32
 		if( failed )
 			THROW( Exception(fmt::format("({}) - {}", failed, LastErrorMsg())) );
-	} 
+	}
 
 	Dataset::~Dataset()
 	{
 		var failed = LGBM_DatasetFree( _handle );
 		if( failed )
-			ERR( "({}) - {}", failed, LastErrorMsg() );
+			ERR( "({}) - {}"sv, failed, LastErrorMsg() );
 	}
 }

@@ -52,7 +52,7 @@ namespace Jde::AI::Dts::LightGbm
 
 	void Booster::Save( const fs::path& path )noexcept(false)
 	{
-		IO::FileUtilities::Save( path, to_string() ); 
+		IO::FileUtilities::Save( path, to_string() );
 	}
 
 	void Booster::LoadModelFromString( const string_view model )noexcept(false)
@@ -123,7 +123,7 @@ namespace Jde::AI::Dts::LightGbm
 		}
 		return _featureNames;
 	}
-	
+
 	Booster::~Booster()
 	{
 		Release();
@@ -136,12 +136,12 @@ namespace Jde::AI::Dts::LightGbm
 			var failed = LGBM_BoosterFree( _handle );
 			_handle = nullptr;
 			if( failed )
-				ERR( "({}) - {}", failed, LastErrorMsg() );
+				ERR( "({}) - {}"sv, failed, LastErrorMsg() );
 		}
 	}
 	string Booster::to_string( uint iterationNumber )const noexcept(false)
 	{
-		string value; 
+		string value;
 		int64_t size = 10;
 		do
 		{
@@ -199,7 +199,7 @@ namespace Jde::AI::Dts::LightGbm
 		}
 	}
 	*/
-	
+
 	sp<vector<double>> Booster::Predict( const Eigen::MatrixXf& matrix )noexcept(false)
 	{
 		const char* pszParameter = "";

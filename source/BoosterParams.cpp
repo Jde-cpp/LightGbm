@@ -98,9 +98,9 @@ namespace Jde::AI::Dts::LightGbm
 			objective = metric;
 		else
 		{
-			objective = metric;  
+			objective = metric;
 			if( metric!="regression" )
-				WARN( "Unknown metric '{}'", metric );
+				WARN( "Unknown metric '{}'"sv, metric );
 		}
  		pMetric->Initial = metric;
 		var pObjective = std::dynamic_pointer_cast<TParameter<string>>( (*this)["objective"] );
