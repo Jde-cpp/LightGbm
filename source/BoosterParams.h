@@ -17,8 +17,9 @@ namespace Jde::AI::Dts::LightGbm
 		BoosterParams( std::istream& is )noexcept;
 		BoosterParams( const fs::path& path )noexcept(false);
 		BoosterParams( const BoosterParams& )=default;
+		virtual ~BoosterParams()=default;
 		uint NumberOfLeavesValue()const noexcept;
-		string GetMetric()const noexcept;void SetMetric( string_view metric )noexcept;
+		string GetMetric()const noexcept override;void SetMetric( string_view metric )noexcept override;
 		string DeviceValue()const noexcept override; void SetCpu()const noexcept  override; void SetGpu()const noexcept  override;/*const because not significant*/
 		string_view ThreadParamName()const noexcept override{return "num_threads"sv;}
 	private:

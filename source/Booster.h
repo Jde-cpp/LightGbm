@@ -19,8 +19,8 @@ namespace LightGbm
 		Booster( const IBoosterParams& params, sp<const IDataset>& ds, sp<const IDataset> pValidation=nullptr )noexcept(false);
 		Booster( const string& model )noexcept(false);
 		Booster( const Booster& ) = delete;
-		~Booster();
-		
+		virtual ~Booster();
+
 		Booster& operator=(const Booster&) = delete;
 
 		bool UpdateOneIteration( int index=-1 )noexcept(false) override;
@@ -30,7 +30,7 @@ namespace LightGbm
 		uint GetEvaluationCounts()const noexcept(false);
 		vector<double> GetEvaluation( bool validation, uint iteration=0 )const noexcept(false) override;
 
-		MapPtr<string,double> FeatureImportances( EFeatureImportance eFeatureImportance )const noexcept(false);
+		MapPtr<string,double> FeatureImportances( EFeatureImportance eFeatureImportance )const noexcept(false) override;
 		string to_string( uint iterationNumber = 0 )const noexcept(false) override;
 		void LoadModelFromString( string_view model )noexcept(false);
 		uint FeatureCount()const noexcept(false);
@@ -45,7 +45,7 @@ namespace LightGbm
 		void Save( const fs::path& path )noexcept(false) override;
 	private:
 		void Release()noexcept;
-		
+
 		sp<vector<double>> FeatureImportanceValues( EFeatureImportance eFeatureImportance )const;
 		mutable vector<string> _featureNames;
 		BoosterHandle _handle{ nullptr };
